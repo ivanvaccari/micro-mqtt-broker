@@ -42,9 +42,42 @@ password: admin
 
 ## Http REST Api
 
-To be completed
+micro-mqtt-broker offer a series of simple REST api to manage users and devices
 
+#### Users
 
+User management api are accessible to admins only
+
+**GET /api/users** - list of registered users
+
+**POST /api/users** - create a new user. Post body must be 
+
+```
+{
+	"username":"new user username",
+	"password":"plain text password, will be encrypted by the backend",
+	"admin": true/false
+}
+``` 
+
+#### Mqtt
+Mqtt device management
+
+**GET /api/mqtt** - list of registered devices for the current logged in user
+
+**GET /api/mqtt/status** - list of currently connected devices for the current logged in user. If the user is admin, the list shows all the connected devices globally.
+
+**POST /api/mqtt** - create a new device. Post body must be 
+
+```
+{
+	"username":"new userdevice username",
+	"password":"plain text password, will be encrypted by the backend",
+
+}
+``` 
+
+**DELETE /api/mqtt/:dviceId** - remove a device. DeviceId can be found using *GET /api/mqtt*
 
 ## Models
 

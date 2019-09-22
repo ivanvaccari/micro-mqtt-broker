@@ -44,3 +44,11 @@ password: admin
 
 To be completed
 
+
+
+## Models
+
+### users
+ - username: string
+ - password: string, bcrypt encrypted password
+ - admin: boolean, true if the user is an admin, false otherwise

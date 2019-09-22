@@ -1,12 +1,13 @@
 # WARNING
 Project in development status. Do not use for any reason.
 
-### micro-mqtt-broker
+## micro-mqtt-broker
 A ready to use standalone mqtt broker for NodeJS, based on Mosca and MongoDB.
-It offer:
+It also offer:
+ - MQTT borker over websocket
  - Http REST interface to manage users and devices
  - Connection/disconnection logs
-
+ 
 ## Install & run
 
 1 - clone & npm install
@@ -39,12 +40,11 @@ username: admin
 password: admin
 ```
 
-
 ## Http REST Api
 
 micro-mqtt-broker offer a series of simple REST api to manage users and devices
 
-#### Users
+### Users
 
 User management api are accessible to admins only
 
@@ -60,10 +60,14 @@ User management api are accessible to admins only
 }
 ``` 
 
-#### Mqtt
+### Mqtt
 Mqtt device management
 
 **GET /api/mqtt** - list of registered devices for the current logged in user
+
+**GET /api/mqtt/:deviceId** - get the data of a single device for the current logged in user
+
+**GET /api/mqtt/:deviceId/log** - get the connection log of a single device for the current logged in user
 
 **GET /api/mqtt/status** - list of currently connected devices for the current logged in user. If the user is admin, the list shows all the connected devices globally.
 
@@ -77,7 +81,7 @@ Mqtt device management
 }
 ``` 
 
-**DELETE /api/mqtt/:dviceId** - remove a device. DeviceId can be found using *GET /api/mqtt*
+**DELETE /api/mqtt/:deviceId** - remove a device. DeviceId can be found using *GET /api/mqtt*
 
 ## Models
 
@@ -85,3 +89,4 @@ Mqtt device management
  - username: string
  - password: string, bcrypt encrypted password
  - admin: boolean, true if the user is an admin, false otherwise
+

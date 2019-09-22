@@ -17,14 +17,14 @@
 
 'use strict';
 
-console.log("[INIT] Starting app");
+console.log("[INIT] Starting app...");
 
 const moscaServer = require('./lib/mosca');
 const routes = require('./lib/routes');
 const dbInit = require('./lib/db-init');
 
 
-console.log("[INIT] Starting Mosca MQTT broker....");
+console.log("[INIT] Starting Mosca MQTT broker...");
 moscaServer.start(db => {
 
   console.log("[INIT] Mosca MQTT broker started");
